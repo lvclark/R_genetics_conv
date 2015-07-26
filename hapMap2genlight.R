@@ -1,6 +1,7 @@
 # Lindsay V. Clark, 18 March 2013
 # R function to import data from TASSEL's HapMap format to adegenet's
 # genlight format.
+# Also available at: http://dx.doi.org/10.13012/C5CC0XMJ
 # On my computer (64 bit OS, 8Gb RAM, 2.7 GHz processor) the function takes
 # approximately 8e-06 seconds per individual per locus to run.
 # (Big datasets could take a few minutes.)

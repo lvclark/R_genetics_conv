@@ -1,6 +1,7 @@
 # Lindsay V. Clark, 26 July 2015
 # R function to import data from TASSEL's HapMap format to adegenet's
 # genind format.
+# Previous version available at: http://dx.doi.org/10.13012/C5CC0XMJ
 # Example use:
 # mydata <- hapMap2genind("HapMap.hmp.txt")
 hapMap2genind <- function(file){
