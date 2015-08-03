@@ -1,4 +1,4 @@
-# Lindsay V. Clark, 26 July 2015
+# Lindsay V. Clark, 3 August 2015
 # R function to import data from TASSEL's HapMap format to numeric (0,1,2) format.
 # Example use:
 # mydata <- hapMap2numeric("HapMap.hmp.txt")
@@ -13,7 +13,8 @@ hapMap2numeric <- function(file, shortnames=TRUE){
   
   # shorten sample names if desired
   if(shortnames){
-    samples <- sapply(samples, function(x) strsplit(x, split="_")[[1]][1])
+    samples <- sapply(samples, function(x) strsplit(x, split="_")[[1]][1],
+                      USE.NAMES=FALSE)
   }
   
   # set up conversion table
