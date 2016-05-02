@@ -67,5 +67,5 @@ numeric2structure <- function(genmat, file,
 
     # export all data
     write.table(StructTab, row.names = FALSE, col.names = FALSE, append = TRUE,
-                sep = "\t", file = file)
+                sep = "\t", file = file, quote = FALSE)
 }
