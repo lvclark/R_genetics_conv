@@ -49,7 +49,11 @@ numeric2structure <- function(genmat, file,
     if(!is.null(addtlColumns)){
         for(i in 1:dim(addtlColumns)[2]){
             StructTab <- data.frame(StructTab, rep(addtlColumns[,i], each = ploidy))
-            names(StructTab)[i + 1] <- dimnames(addtlColumns[2][i])
+            if(!is.null(dimnames(addtlColumns)[[2]])){
+                names(StructTab)[i + 1] <- dimnames(addtlColumns)[[2]][i]
+            } else {
+                names(StructTab)[i + 1] <- paste("X", i, sep = "")
+            }
         }
     }
 
