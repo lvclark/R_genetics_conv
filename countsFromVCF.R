@@ -154,7 +154,7 @@ countsFromVCF <- function(filename, nread = 1000L, indToKeep = NULL, indToExclud
     AllREF <- AllREF[1:currentSNP]
     AllALT <- AllALT[1:currentSNP]
   }
-  dimnames(AllDep1) <- dimnames(AllDep2) <- list(AllName, indNames)
+  dimnames(AllDep1) <- dimnames(AllDep2) <- dimnames(AllGen) <- list(AllName, indNames)
   close(vcfFile)
   
   return(list(Names = AllName, Chr = AllChr, Pos = AllPos, Ref = AllREF, Alt = AllALT,
