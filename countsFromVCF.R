@@ -1,6 +1,6 @@
 # Function for getting read counts (allelic depth), as well as genotypes and some marker metadata, from VCF file.
 # This function has been tested with VCF files from the TASSEL GBSv2 pipeline.
-# Unlike, the vcfR package, this function does not read the whole VCF file at once, resulting in considerable
+# Unlike the vcfR package, this function does not read the whole VCF file at once, resulting in considerable
 # memory savings and allowing much larger files to be read.
 
 # Lindsay V. Clark, July 19, 2017
