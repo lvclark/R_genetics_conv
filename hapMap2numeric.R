@@ -8,13 +8,12 @@
 hapMap2numeric <- function(file, shortnames=TRUE){
   hapmap <- as.matrix(read.table(file, header=TRUE, row.names=1, sep="\t",
                        stringsAsFactors=FALSE)[,-(2:10)])
-  samples <- dimnames(hapmap)[[2]][-1]
+  samples <- scan(file, what = character(), nlines = 1)[-(1:11)]
   loci <- dimnames(hapmap)[[1]]
   
   # shorten sample names if desired
   if(shortnames){
-    samples <- sapply(samples, function(x) strsplit(x, split="_")[[1]][1],
-                      USE.NAMES=FALSE)
+    samples <- sub("_.*$", "", samples)
   }
   
   # set up conversion table

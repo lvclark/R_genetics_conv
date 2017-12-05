@@ -8,7 +8,7 @@ hapMap2genind <- function(file){
   require(adegenet)
   hapmap <- read.table(file, header=TRUE, row.names=1, sep="\t",
                        stringsAsFactors=FALSE)
-  samples <- names(hapmap)[11:length(hapmap)]
+  samples <- scan(file, what = character(), nlines = 1)[-(1:11)]
   conv <- c("AA", "CC", "TT", "GG", "AC", "AT", "AG", "CT", "CG", "TG", NA)
   names(conv) <- c("A", "C", "T", "G", "M" , "W", "R", "Y", "S",  "K", "N")
   mydf <- matrix(NA, nrow=dim(hapmap)[1], ncol=length(samples),
