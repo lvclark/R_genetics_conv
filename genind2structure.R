@@ -37,7 +37,9 @@ genind2structure <- function(obj, file="", pops=FALSE){
   
   # begin going through loci
   for(L in loci){
-    thesegen <- obj@tab[,grep(paste("^", L, "\\.", sep=""), dimnames(obj@tab)[[2]])] # genotypes by locus
+    thesegen <- obj@tab[,grep(paste("^", L, "\\.", sep=""), 
+                              dimnames(obj@tab)[[2]]), 
+                        drop = FALSE] # genotypes by locus
     al <- 1:dim(thesegen)[2] # numbered alleles
     for(s in 1:S){
       if(all(!is.na(thesegen[s,]))){
