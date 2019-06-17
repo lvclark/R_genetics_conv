@@ -21,19 +21,20 @@ genind2structure <- function(obj, file="", pops=FALSE){
   # get the max ploidy of the dataset
   pl <- max(obj@ploidy)
   # get the number of individuals
-  S <- nInd(obj)
+  S <- adegenet::nInd(obj)
   # column of individual names to write; set up data.frame
   tab <- data.frame(ind=rep(indNames(obj), each=pl))
   # column of pop ids to write
   if(pops){
-    popnums <- 1:nPop(obj)
-    names(popnums) <- as.character(unique(pop(obj)))
-    popcol <- rep(popnums[as.character(pop(obj))], each=pl)
+    popnums <- 1:adegenet::nPop(obj)
+    names(popnums) <- as.character(unique(adegenet::pop(obj)))
+    popcol <- rep(popnums[as.character(adegenet::pop(obj))], each=pl)
     tab <- cbind(tab, data.frame(pop=popcol))
   }
-  loci <- locNames(obj) 
+  loci <- adegenet::locNames(obj) 
   # add columns for genotypes
-  tab <- cbind(tab, matrix(-9, nrow=dim(tab)[1], ncol=nLoc(obj), dimnames=list(NULL,loci)))
+  tab <- cbind(tab, matrix(-9, nrow=dim(tab)[1], ncol=adegenet::nLoc(obj),
+                           dimnames=list(NULL,loci)))
   
   # begin going through loci
   for(L in loci){
