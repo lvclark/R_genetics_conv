@@ -5,7 +5,7 @@
 # "shortnames" indicates whether individual names should be shortened to remove everything
 # after the first underscore.
 
-hapMap2numeric <- function(file, shortnames=TRUE){
+hapMap2numeric <- function(file, shortnames=TRUE, alphabetical = TRUE){
   hapmap <- as.matrix(read.table(file, header=TRUE, row.names=1, sep="\t",
                        stringsAsFactors=FALSE)[,-(2:10)])
   samples <- scan(file, what = character(), nlines = 1)[-(1:11)]
@@ -30,7 +30,14 @@ hapMap2numeric <- function(file, shortnames=TRUE){
   names(cg) <- c("C","S","G","N")
   names(ct) <- c("C","Y","T","N")
   names(gt) <- c("G","K","T","N")
-  conv <- list(ac,ac,ag,ag,at,at,cg,cg,ct,ct,gt,gt)
+  if(alphabetical){
+    conv <- list(ac,ac,ag,ag,at,at,cg,cg,ct,ct,gt,gt)
+  } else {
+    swap <- c(3, 2, 1, 4)
+    conv <- list(ac,ac[swap],ag,ag[swap],at,at[swap],
+                 cg,cg[swqp],ct,ct[swap],gt,gt[swap])
+  }
+  
   names(conv) <- c("A/C","C/A","A/G","G/A","A/T","T/A","C/G","G/C",
                    "C/T","T/C","G/T","T/G")
   
