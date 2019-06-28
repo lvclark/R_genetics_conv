@@ -35,7 +35,7 @@ hapMap2numeric <- function(file, shortnames=TRUE, alphabetical = TRUE){
   } else {
     swap <- c(3, 2, 1, 4)
     conv <- list(ac,ac[swap],ag,ag[swap],at,at[swap],
-                 cg,cg[swqp],ct,ct[swap],gt,gt[swap])
+                 cg,cg[swap],ct,ct[swap],gt,gt[swap])
   }
   
   names(conv) <- c("A/C","C/A","A/G","G/A","A/T","T/A","C/G","G/C",
