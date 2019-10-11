@@ -16,6 +16,12 @@ hapMap2genlight <- function(file){
   hapmap <- read.table(file, header=TRUE, row.names=1, sep="\t",
                        stringsAsFactors=FALSE, comment.char = "")[,-(2:10)]
   samples <- scan(file, what = character(), nlines = 1, quiet = TRUE)[-(1:11)]
+  
+  # filter to biallelic markers
+  if(colnames(hapmap)[1] != "alleles"){
+    stop("Second column should be 'alleles'.")
+  }
+  hapmap <- hapmap[grep("^[ACGT]/[ACGT]$", hapmap[,1]),]
   loci <- row.names(hapmap)
   
   # set up conversion table
