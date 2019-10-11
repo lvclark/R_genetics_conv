@@ -15,7 +15,7 @@ hapMap2genlight <- function(file){
   require(adegenet)
   hapmap <- read.table(file, header=TRUE, row.names=1, sep="\t",
                        stringsAsFactors=FALSE, comment.char = "")[,-(2:10)]
-  samples <- scan(file, what = character(), nlines = 1)[-(1:11)]
+  samples <- scan(file, what = character(), nlines = 1, quiet = TRUE)[-(1:11)]
   loci <- row.names(hapmap)
   
   # set up conversion table
