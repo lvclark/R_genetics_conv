@@ -23,7 +23,7 @@ genind2structure <- function(obj, file="", pops=FALSE){
   # get the number of individuals
   S <- adegenet::nInd(obj)
   # column of individual names to write; set up data.frame
-  tab <- data.frame(ind=rep(indNames(obj), each=pl))
+  tab <- data.frame(ind=rep(adegenet::indNames(obj), each=pl))
   # column of pop ids to write
   if(pops){
     popnums <- 1:adegenet::nPop(obj)
@@ -44,7 +44,7 @@ genind2structure <- function(obj, file="", pops=FALSE){
     al <- 1:dim(thesegen)[2] # numbered alleles
     for(s in 1:S){
       if(all(!is.na(thesegen[s,]))){
-        tabrows <- (1:dim(tab)[1])[tab[[1]] == indNames(obj)[s]] # index of rows in output to write to
+        tabrows <- (1:dim(tab)[1])[tab[[1]] == adegenet::indNames(obj)[s]] # index of rows in output to write to
         tabrows <- tabrows[1:sum(thesegen[s,])] # subset if this is lower ploidy than max ploidy
         tab[tabrows,L] <- rep(al, times = thesegen[s,])
       }
